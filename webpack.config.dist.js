@@ -2,8 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
   entry: [
+    'babel-polyfill',
     './src/index.js',
   ],
   output: {
@@ -13,11 +13,28 @@ module.exports = {
     library: 'GoogleLogin',
   },
   module: {
-    rules: [{
-      use: 'babel-loader',
-      test: /\.js$/,
-      exclude: /node_modules/,
-    }],
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: [
+            ["env", {
+              "targets": {
+                "browsers": [
+                  "last 3 versions"
+                ]
+              },
+              "modules": false,
+              "useBuiltIns": true,
+              "debug": true
+            }],
+            ["react"]
+          ]
+        }
+      }
+    ]
   },
   externals: {
     'react': 'react',
@@ -31,11 +48,6 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
       },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
-    new webpack.optimize.AggressiveMergingPlugin(),
+    })
   ],
 };
