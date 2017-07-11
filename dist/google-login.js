@@ -376,7 +376,7 @@ var GoogleLogin = function (_Component) {
       })(document, 'script', 'google-login', function () {
         var params = {
           client_id: clientId,
-          cookiepolicy: cookiePolicy,
+          cookie_policy: cookiePolicy,
           login_hint: loginHint,
           hosted_domain: hostedDomain,
           fetch_basic_profile: fetchBasicProfile,

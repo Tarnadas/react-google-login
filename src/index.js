@@ -23,7 +23,7 @@ class GoogleLogin extends Component {
     })(document, 'script', 'google-login', () => {
       const params = {
         client_id: clientId,
-        cookiepolicy: cookiePolicy,
+        cookie_policy: cookiePolicy,
         login_hint: loginHint,
         hosted_domain: hostedDomain,
         fetch_basic_profile: fetchBasicProfile,
