@@ -370,7 +370,7 @@ var GoogleLogin = function (_Component) {
         var js = element;
         js = d.createElement(s);
         js.id = id;
-        js.src = '//apis.google.com/js/client:platform.js';
+        js.src = 'https://apis.google.com/js/client:platform.js';
         fjs.parentNode.insertBefore(js, fjs);
         js.onload = cb;
       })(document, 'script', 'google-login', function () {
